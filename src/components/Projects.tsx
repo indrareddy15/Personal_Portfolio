@@ -1,7 +1,7 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { ExternalLink, Github } from 'lucide-react';
-import { portfolioData } from '../data/portfolio';
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { ExternalLink, Github } from "lucide-react";
+import { portfolioData } from "../data/portfolio";
 
 export const Projects = () => {
   const { ref, inView } = useInView({
@@ -19,10 +19,7 @@ export const Projects = () => {
         >
           Featured Projects
         </motion.h2>
-        <div
-          ref={ref}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
-        >
+        <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {portfolioData.projects.map((project, index) => (
             <motion.div
               key={project.name}
@@ -40,11 +37,18 @@ export const Projects = () => {
                     <Github className="w-5 h-5" />
                   </button>
                   <button className="p-2 hover:text-primary transition-colors">
-                    <ExternalLink className="w-5 h-5" />
+                    <ExternalLink
+                      onClick={() => {
+                        console.log("Project Click");
+                      }}
+                      className="w-5 h-5"
+                    />
                   </button>
                 </div>
               </div>
-              <p className="text-text-secondary mb-4">{project.description[0]}</p>
+              <p className="text-text-secondary mb-4">
+                {project.description[0]}
+              </p>
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.tech_stack.map((tech) => (
                   <span
